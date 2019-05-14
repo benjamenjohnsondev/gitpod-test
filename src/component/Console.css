@@ -1,0 +1,26 @@
+.console {
+  background: #151422;
+  border-radius: 30px;
+  color: #F1686C;
+  font-family: 'Ubuntu Mono', monospace;
+  margin: 0 auto 50px;
+  max-width: 100%;
+  padding: 5px 50px;
+  text-align: left;
+  width: 50vw;
+}
+
+.flashing {
+  animation: flashing alternate-reverse ease-in infinite .7s;
+  top: -3px;
+  position: relative;
+}
+
+@keyframes flashing {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
