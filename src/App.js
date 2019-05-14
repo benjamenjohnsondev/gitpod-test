@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './media/Logo-transparent.svg';
+import logo from './media/logo-edited.svg';
 import reactLogo from './media/logo.svg';
 import Console from './component/Console';
 import './App.css';
