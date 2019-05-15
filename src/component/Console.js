@@ -16,6 +16,9 @@ class Console extends Component
     this.onSubmit = this.onSubmit.bind(this)
     this.consoleLog = React.createRef();
   }
+  componentDidMount(){
+    this.nameInput.focus();
+  }
   handleChange(event) {
     this.setState({
       currText: event.target.value}
@@ -34,9 +37,9 @@ class Console extends Component
   }
   render() {
     return (
-      <form onSubmit={this.onSubmit} className={styles.Console}>
+      <form onSubmit={this.onSubmit} onClick={()=>{this.nameInput.focus()}} className={styles.Console}>
         <ConsoleLog data={this.state.data}/>
-        <input className={styles.input} value={this.state.currText} onChange={this.handleChange} type="text"/>
+        <input ref={(input) => { this.nameInput = input; }} className={styles.input} value={this.state.currText} onChange={this.handleChange} type="text"/>
       </form>
     );
   }
