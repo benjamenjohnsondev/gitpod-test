@@ -18,7 +18,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Built with React<img src={reactLogo} alt="react-logo"/>
+          <img src={reactLogo} alt="react-logo"/>
         </a>
       </footer>
     </div>
