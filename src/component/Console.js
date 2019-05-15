@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import './Console.css';
+import styles from '../css/Console.module.css';
+import {Link} from 'react-router-dom';
 
 class Console extends Component
 {
   render() {
     return (
-      <div className="console">
+      <div className={styles.Console}>
         <p>
-          > Full website coming soon <span className="flashing">_</span>
+          > Full website coming soon <span className={styles.flashing}>_</span>
+        </p>
+        <p>
+          <Link to="/console">> Console</Link>
         </p>
       </div>
     );

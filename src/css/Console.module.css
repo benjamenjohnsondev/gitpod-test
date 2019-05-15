@@ -1,13 +1,12 @@
-.console {
+.Console {
   background: #151422;
   border-radius: 30px;
   color: #F1686C;
   font-family: 'Ubuntu Mono', monospace;
   margin: 0 auto 50px;
   max-width: 100%;
-  padding: 5px 50px;
+  padding: 20px 50px;
   text-align: left;
-  width: 50vw;
 }
 
 .flashing {
