@@ -1,12 +1,23 @@
 .Console {
   background: #151422;
-  border-radius: 30px;
   color: #F1686C;
   font-family: 'Ubuntu Mono', monospace;
-  margin: 0 auto 50px;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
   max-width: 100%;
-  padding: 20px 50px;
   text-align: left;
+}
+
+.input {
+  background: none;
+  border: none;
+  color: #dddbf1;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .flashing {

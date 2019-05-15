@@ -16,7 +16,7 @@
 }
 
 .AppHeader {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,10 +27,36 @@
 }
 
 .AppFooter {
-  min-height: 10vh;
+  min-height: 0;
 }
 
 .AppLink {
   color: #F1686C;
   position: relative;
+}
+
+.Console {
+  background: #151422;
+  border-radius: 30px;
+  color: #F1686C;
+  font-family: 'Ubuntu Mono', monospace;
+  margin: 0 auto 50px;
+  max-width: 100%;
+  padding: 20px 50px;
+  text-align: left;
+}
+
+.flashing {
+  animation: flashing alternate-reverse ease-in infinite .7s;
+  top: -3px;
+  position: relative;
+}
+
+@keyframes flashing {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
