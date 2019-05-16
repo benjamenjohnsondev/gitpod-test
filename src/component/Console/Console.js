@@ -9,7 +9,9 @@ class Console extends Component {
     this.state = {
       data: ["hey", "world"],
       currText: "",
-      history: 0
+      history: 0,
+      initialText: "Try `help`",
+      tempText: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -19,6 +21,27 @@ class Console extends Component {
   }
   componentDidMount() {
     this.nameInput.focus();
+    setTimeout(() => {
+      this.showText(this.state.tempText, 0, 100);
+    }, 200);
+  }
+  componentWillMount() {
+    let temp = this.state.initialText;
+    temp = temp.split("");
+    this.setState({
+      tempText: temp
+    });
+  }
+  showText(message, index, interval) {
+    if (index < message.length) {
+      // console.log(message[index]);
+      this.setState(state => ({
+        currText: state.currText + message[index++]
+      }));
+      setTimeout(() => {
+        this.showText(message, index, interval);
+      }, interval);
+    }
   }
   incrementHistory(modifier) {
     this.setState(
@@ -58,7 +81,7 @@ class Console extends Component {
         this.setState({
           currText: "",
           history: 0
-        })
+        });
       }
     }
   }
