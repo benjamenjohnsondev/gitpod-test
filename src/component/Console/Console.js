@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../css/Console.module.css';
+import styles from '../../css/Console.module.css';
 import ConsoleLog from './ConsoleLog';
 
 class Console extends Component

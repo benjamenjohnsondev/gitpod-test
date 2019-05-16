@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../css/Console.module.css';
-import Console from '../component/Console';
+import Console from '../component/Console/Console';
 
 class ConsoleRoute extends Component
 {

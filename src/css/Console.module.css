@@ -27,6 +27,19 @@
   position: relative;
 }
 
+.command {
+  display: flex;
+}
+
+.Prompt {
+  color:#dddbf0;
+  margin-right: 20px;
+}
+
+.dollar {
+  color: #26cdab;
+}
+
 @keyframes flashing {
   from {
     opacity: 0;

@@ -1,7 +1,7 @@
 .App {
   background-color: #3B3355;
   background: linear-gradient(to right top, #f1686c, #c85478, #984978, #673f6c, #3b3355);
-  color: white;
+  color: #dddbf0;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #dddbf0;
   padding: 0 20px;
 }
 
@@ -42,7 +42,7 @@
   font-family: 'Ubuntu Mono', monospace;
   margin: 0 auto 50px;
   max-width: 100%;
-  padding: 20px 50px;
+  padding: 10px 50px;
   text-align: left;
 }
 
