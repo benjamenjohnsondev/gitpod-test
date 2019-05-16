@@ -12,7 +12,7 @@ class ConsoleLog extends Component {
   handleRender(item, key) {
     return (
       <div className={styles.command} key={key}>
-        <PreTerm />{item}
+        <PreTerm /><span className={styles.log}>{item}</span>
       </div>
     );
   }
