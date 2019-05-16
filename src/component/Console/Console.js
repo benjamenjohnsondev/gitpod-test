@@ -67,7 +67,7 @@ class Console extends Component {
       } else {
         this.setState({
           currText: "",
-          history: 3
+          history: 0
         });
       }
     }
