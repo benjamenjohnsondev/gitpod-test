@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PreTerm from "./Prompt";
 import styles from "../../css/Console.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function Ascii() {
   let raw =
@@ -29,7 +31,13 @@ class ConsoleLog extends Component {
   handleRender(item, key) {
     return (
       <div className={styles.command} key={key}>
-        <PreTerm /><span className={styles.log}>{item}</span>
+        <PreTerm />
+        {this.props.commands[item] ? (
+          ""
+        ) : (
+          <FontAwesomeIcon icon={faTimes} />
+        )}
+        <span className={styles.log}>{item}</span>
       </div>
     );
   }

@@ -11,13 +11,19 @@ class Console extends Component {
       currText: "",
       history: 0,
       initialText: "Just a demo, no commands yet. Try navigating!",
-      tempText: []
+      tempText: [],
+      commands: {
+        'easter egg' : this.easterEgg
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.consoleLog = React.createRef();
+  }
+  easterEgg() {
+    console.log('You found me!');
   }
   componentDidMount() {
     this.nameInput.focus();
@@ -106,7 +112,7 @@ class Console extends Component {
         }}
         className={styles.Console}
       >
-        <ConsoleLog data={this.state.data} />
+        <ConsoleLog commands={this.state.commands} data={this.state.data} />
         <div className={styles.promptInput}>
           <Prompt />
           <input
