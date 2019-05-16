@@ -10,7 +10,7 @@ class Console extends Component {
       data: ["hey", "world"],
       currText: "",
       history: 0,
-      initialText: "Try `help`",
+      initialText: "Just a demo, no commands yet. Try navigating!",
       tempText: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,6 @@ class Console extends Component {
   }
   showText(message, index, interval) {
     if (index < message.length) {
-      // console.log(message[index]);
       this.setState(state => ({
         currText: state.currText + message[index++]
       }));
@@ -49,7 +48,6 @@ class Console extends Component {
         history: this.state.history + modifier
       },
       () => {
-        console.log(this.state.history);
         let newText = this.state.data[
           this.state.data.length - this.state.history
         ];
@@ -75,7 +73,10 @@ class Console extends Component {
   onKeyDown(event) {
     if (event.keyCode === 40) {
       event.preventDefault();
-      if (this.state.history + 1 > this.state.data.length) {
+      if (
+        this.state.history - 1 < this.state.data.length &&
+        this.state.history - 1 > 0
+      ) {
         this.incrementHistory(-1);
       } else {
         this.setState({
