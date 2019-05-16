@@ -62,11 +62,6 @@ class Console extends Component {
       event.preventDefault();
       if (this.state.history + 1 <= this.state.data.length) {
         this.incrementHistory(+1);
-      } else {
-        this.setState({
-          currText: "",
-          history: 0
-        });
       }
     }
   }
