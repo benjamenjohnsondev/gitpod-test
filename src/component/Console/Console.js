@@ -11,19 +11,32 @@ class Console extends Component {
       currText: "",
       history: 0,
       initialText: "Just a demo, no commands yet. Try navigating!",
-      tempText: []
+      tempText: [],
+      commands: {
+        'easteregg' : this.easterEgg
+      },
+      modifier: "",
+      timeout: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.consoleLog = React.createRef();
+    this.onKeyInput = this.onKeyInput.bind(this);
+    this.clearModifier = this.clearModifier.bind(this);
+  }
+  easterEgg() {
+    console.log(
+      "%c/****************\n * You found me! \n****************/",
+      "background: #26cdab; color: #fff; padding: 10px 10px;"
+    );
   }
   componentDidMount() {
     this.nameInput.focus();
-    setTimeout(() => {
+    this.setState({timeout: setTimeout(() => {
       this.showText(this.state.tempText, 0, 100);
-    }, 200);
+    }, 200)});
   }
   componentWillMount() {
     let temp = this.state.initialText;
@@ -37,9 +50,10 @@ class Console extends Component {
       this.setState(state => ({
         currText: state.currText + message[index++]
       }));
-      setTimeout(() => {
+      this.setState({ timeout: setTimeout(() => {
         this.showText(message, index, interval);
-      }, interval);
+      }, interval)
+        });
     }
   }
   incrementHistory(modifier) {
@@ -57,17 +71,49 @@ class Console extends Component {
       }
     );
   }
-  onKeyUp(event) {
-    if (event.keyCode === 38) {
-      event.preventDefault();
-      if (this.state.history + 1 <= this.state.data.length) {
-        this.incrementHistory(+1);
-      }
+  onKeyInput(event) {
+
+    switch (event.keyCode) {
+      case 38:
+        event.preventDefault();
+        this.onKeyUp();
+        break;
+
+      case 40:
+        event.preventDefault();
+        this.onKeyDown();
+
+        break;
+
+      case 17:
+        this.setState({
+          modifier: "ctrl"
+        })
+        break;
+
+      case 67:
+        if (this.state.modifier === "ctrl") {
+          this.consoleLogData();
+          clearTimeout(this.state.timeout);
+          clearInterval(this.state.currFunction);
+        }
+        break;
+
+      default:
+        break;
     }
   }
-  onKeyDown(event) {
-    if (event.keyCode === 40) {
-      event.preventDefault();
+  clearModifier() {
+    this.setState({
+      modifier: ""
+    })
+  }
+  onKeyUp() {
+    if (this.state.history + 1 <= this.state.data.length) {
+      this.incrementHistory(+1);
+    }
+  }
+  onKeyDown() {
       if (
         this.state.history - 1 < this.state.data.length &&
         this.state.history - 1 > 0
@@ -79,15 +125,13 @@ class Console extends Component {
           history: 0
         });
       }
-    }
   }
   handleChange(event) {
     this.setState({
       currText: event.target.value
     });
   }
-  onSubmit(event) {
-    event.preventDefault();
+  consoleLogData() {
     let joined = this.state.data.concat(this.state.currText);
     if (joined !== this.state.data) {
       this.setState({
@@ -96,6 +140,10 @@ class Console extends Component {
       });
     }
     window.scrollTo(0, document.body.scrollHeight);
+  }
+  onSubmit(event) {
+    event.preventDefault();
+    this.consoleLogData();
   }
   render() {
     return (
@@ -106,7 +154,7 @@ class Console extends Component {
         }}
         className={styles.Console}
       >
-        <ConsoleLog data={this.state.data} />
+        <ConsoleLog commands={this.state.commands} data={this.state.data} />
         <div className={styles.promptInput}>
           <Prompt />
           <input
@@ -116,8 +164,8 @@ class Console extends Component {
             className={styles.input}
             value={this.state.currText}
             onChange={this.handleChange}
-            onKeyUp={this.onKeyUp}
-            onKeyDown={this.onKeyDown}
+            onKeyDown={this.onKeyInput}
+            onKeyUp={this.clearModifier}
             type="text"
           />
         </div>

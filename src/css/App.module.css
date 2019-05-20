@@ -9,7 +9,7 @@
 }
 
 .AppLogo {
-  height: 40vmin;
+  height: auto;
   pointer-events: none;
   width: 100%;
   max-width: 800px;
@@ -40,9 +40,9 @@
   border-radius: 30px;
   color: #F1686C;
   font-family: 'Ubuntu Mono', monospace;
-  margin: 0 auto 50px;
+  margin: 50px auto 50px;
   max-width: 100%;
-  padding: 10px 50px;
+  padding: 20px;
   text-align: left;
 }
 
@@ -50,6 +50,12 @@
   animation: flashing alternate-reverse ease-in infinite .7s;
   top: -3px;
   position: relative;
+}
+
+@media (min-width: 600px) {
+  .Console {
+    padding: 50px;
+  }
 }
 
 @keyframes flashing {

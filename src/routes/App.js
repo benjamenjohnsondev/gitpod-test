@@ -8,8 +8,8 @@ function App() {
   return (
     <div className={styles.AppWrap}>
       <header className={styles.AppHeader}>
-        <img src={logo} className={styles.AppLogo} alt="logo" />
         <div className={styles.Console}>
+          <img src={logo} className={styles.AppLogo} alt="logo" />
           <p>
             check out the <Link to="/console">console</Link>
           </p>

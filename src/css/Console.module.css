@@ -55,7 +55,16 @@
 }
 
 .log {
+  margin-left: 5px;
   word-break: break-word;
+}
+
+.logSuccess {
+  color: #26cdab;
+}
+
+.logError {
+  color: #F1686C;
 }
 
 @keyframes flashing {

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PreTerm from "./Prompt";
 import styles from "../../css/Console.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 function Ascii() {
   let raw =
@@ -18,28 +20,57 @@ function Ascii() {
   );
 }
 
+function CommandWrapper(props) {
+  return (
+    <div className={styles.command} key={props.propKey}>
+      <PreTerm />
+      {props.children}
+    </div>
+  );
+}
+
 class ConsoleLog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      runCommand: true
     };
   }
 
   handleRender(item, key) {
+    if (this.props.commands[item]) {
+        return (
+          <CommandWrapper key={key}>
+            <div className={styles.logSuccess}>
+              <FontAwesomeIcon icon={faCheck} />
+              <span className={styles.log}>{item}</span>
+            </div>
+          </CommandWrapper>
+        );
+    }
     return (
-      <div className={styles.command} key={key}>
-        <PreTerm /><span className={styles.log}>{item}</span>
-      </div>
+      <CommandWrapper key={key} propKey={key}>
+        <div className={styles.logError}>
+          <FontAwesomeIcon icon={faTimes} />
+          <span className={styles.log}>{item}</span>
+        </div>
+      </CommandWrapper>
     );
   }
   render() {
     const commands = this.props.data.map((item, key) => {
+      if (this.props.commands[item] && this.state.runCommand) {
+        this.props.commands[item]();
+        this.setState({
+          runCommand: false
+        });
+      }
       return this.handleRender(item, key);
     });
     return (
       <div>
-        <Ascii/>
+        <Ascii />
         {commands}
       </div>
     );
