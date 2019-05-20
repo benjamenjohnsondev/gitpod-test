@@ -23,7 +23,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #dddbf0;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 .AppFooter {
@@ -41,7 +41,8 @@
   color: #F1686C;
   font-family: 'Ubuntu Mono', monospace;
   margin: 50px auto 50px;
-  max-width: 100%;
+  max-width: 800px;
+  width: 100%;
   padding: 20px;
   text-align: left;
 }
