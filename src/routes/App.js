@@ -2,11 +2,15 @@ import React from 'react';
 import logo from '../media/logo-edited.svg';
 // import reactLogo from '../media/logo.svg';
 import styles from '../css/App.module.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <div className={styles.AppWrap}>
+      <Helmet>
+        <meta charSet="utf-8" />
+      </Helmet>
       <header className={styles.AppHeader}>
         {/* <div className={styles.ConsoleHeader} /> */}
         <div className={styles.Console}>
