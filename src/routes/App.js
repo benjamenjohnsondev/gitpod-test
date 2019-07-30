@@ -20,7 +20,7 @@ function App() {
               className={styles.AppLogo}
               alt="Ben Hogben - Full Stack Web Developer"
             />
-            <span styles={styles.HideMe}>
+            <span className={styles.HideMe}>
               Ben Hogben - Full Stack Web Developer
             </span>
           </h1>
