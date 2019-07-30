@@ -2,14 +2,28 @@ import React from 'react';
 import logo from '../media/logo-edited.svg';
 // import reactLogo from '../media/logo.svg';
 import styles from '../css/App.module.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <div className={styles.AppWrap}>
+      <Helmet>
+        <meta charSet="utf-8" />
+      </Helmet>
       <header className={styles.AppHeader}>
+        {/* <div className={styles.ConsoleHeader} /> */}
         <div className={styles.Console}>
-          <img src={logo} className={styles.AppLogo} alt="logo" />
+          <h1>
+            <img
+              src={logo}
+              className={styles.AppLogo}
+              alt="Ben Hogben - Full Stack Web Developer"
+            />
+            <span styles={styles.HideMe}>
+              Ben Hogben - Full Stack Web Developer
+            </span>
+          </h1>
           <p>
             check out the <Link to="/console">console</Link>
           </p>
