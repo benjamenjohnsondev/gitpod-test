@@ -35,22 +35,104 @@
   position: relative;
 }
 
+.Button {
+  padding: 8px;
+  border-radius: 100%;
+  background: #000;
+  margin: 0 5px;
+  position: relative;
+}
+
+.Button:before,
+.Button:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(0, 0, 0, .7);
+  opacity: 0;
+  transition: .1s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Button.Fullscreen:before {
+  transform: translate(-30%, -100%) rotate(45deg);
+}
+
+.Button.Fullscreen:after {
+  transform: translate(-75%, 0) rotate(225deg);
+}
+
+.Button.Minimise:before {
+  background: rgba(0, 0, 0, .7);
+  border: none;
+  height: 1px;
+  padding: 1px;
+  width: 7px;
+}
+
+.Button.Minimise:after {
+  content:none;
+}
+
+.Button.Close:before,
+.Button.Close:after {
+  background: rgb(72, 31, 32);
+  border: none;
+  height: 1px;
+  padding: 1px;
+  width: 9px;
+}
+
+.Button.Close:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.Button.Close:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.Close {
+  background: #F1686C;
+}
+.Minimise {
+  background: #F0B67F;
+}
+
+.Fullscreen {
+  background: #03cdab;
+}
+
 .Console {
   background: #151422;
-  border-radius: 30px;
+  border-radius: 0 0 30px 30px;
   color: #F1686C;
   font-family: 'Ubuntu Mono', monospace;
-  margin: 50px auto 50px;
+  margin: 0 auto 50px;
   max-width: 800px;
   width: 100%;
-  padding: 20px;
+  padding: 0 20px 20px;
   text-align: left;
 }
 
 .ConsoleHeader {
-    background: red;
-    padding: 10px;
+    background: #3b3355;
+    border-radius: 30px 30px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 800px;
+    padding: 20px;
     width: 100%;
+}
+
+.ConsoleHeader:hover .Button:before,
+.ConsoleHeader:hover .Button:after {
+  opacity: 1;
 }
 
 .HideMe {
@@ -65,7 +147,7 @@
 
 @media (min-width: 600px) {
   .Console {
-    padding: 50px;
+    padding: 20px 50px 50px;
   }
 }
 
