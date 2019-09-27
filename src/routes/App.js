@@ -11,7 +11,11 @@ function App() {
         <meta charSet="utf-8" />
       </Helmet>
       <header className={styles.AppHeader}>
-        {/* <div className={styles.ConsoleHeader} /> */}
+        <div className={styles.ConsoleHeader}>
+          <div className={styles.Button + " " + styles.Close}></div>
+          <div className={styles.Button + " " + styles.Minimise}></div>
+          <div className={styles.Button + " " + styles.Fullscreen}></div>
+        </div>
         <div className={styles.Console}>
           <h1>
             <img
