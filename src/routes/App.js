@@ -3,8 +3,22 @@ import logo from '../media/logo-edited.svg';
 import styles from '../css/App.module.css';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import classNames from "classnames/bind";
+let cx = classNames.bind(styles);
 
 function App() {
+  let closeButton = cx({
+    [`${styles.Button}`]: true,
+    [`${styles.Close}`]: true
+  });
+  let minimiseButton = cx({
+    [`${styles.Button}`]: true,
+    [`${styles.Minimise}`]: true
+  });
+  let fullscreenButton = cx({
+    [`${styles.Button}`]: true,
+    [`${styles.Fullscreen}`]: true
+  });
   return (
     <div className={styles.AppWrap}>
       <Helmet>
@@ -12,15 +26,17 @@ function App() {
       </Helmet>
       <header className={styles.AppHeader}>
         <div className={styles.ConsoleHeader}>
-          <div className={styles.Button + " " + styles.Close}></div>
-          <div className={styles.Button + " " + styles.Minimise}></div>
-          <div className={styles.Button + " " + styles.Fullscreen}></div>
+          <button className={closeButton}/>
+          <button className={minimiseButton}/>
+          <button arian className={fullscreenButton}/>
         </div>
         <div className={styles.Console}>
           <h1>
             <img
               src={logo}
               className={styles.AppLogo}
+              width="700"
+              height="176"
               alt="Ben Hogben - Full Stack Web Developer"
             />
             <span className={styles.HideMe}>
