@@ -15,6 +15,18 @@
   overflow: hidden;
   width: 800px;
   max-width: 100%;
+  transform-origin: center top;
+  transition: .3s ease;
+  max-height: 321px;
+}
+
+.minimise .AppHeader {
+    transform: translate(
+        calc(50vw - 50% - 10px),
+        calc(50vh - 50% - 10px)
+    );
+    width: 120px;
+    height: 55px;
 }
 
 .AppLogo {
@@ -32,6 +44,22 @@
   font-size: calc(10px + 2vmin);
   color: #dddbf0;
   padding: 0 10px;
+  transition: .3s ease;
+}
+
+.AppWrap.fullscreen {
+  padding: 0;
+}
+
+.AppWrap.fullscreen .Console {
+  height: 100%;
+}
+
+.AppWrap.fullscreen .AppHeader{
+  height: 100vh;
+  max-height: none;
+  width: 100vw;
+  border-radius: 0;
 }
 
 .AppFooter {
@@ -41,80 +69,6 @@
 .AppLink {
   color: #F1686C;
   position: relative;
-}
-
-.Button {
-  padding: 8px;
-  border-radius: 100%;
-  background: #000;
-  margin: 0 5px;
-  position: relative;
-  cursor: pointer;
-  border: none;
-}
-
-.Button:before,
-.Button:after {
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid rgba(0, 0, 0, .7);
-  opacity: 0;
-  transition: .1s ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.Button.Fullscreen:before {
-  transform: translate(-30%, -100%) rotate(45deg);
-}
-
-.Button.Fullscreen:after {
-  transform: translate(-75%, 0) rotate(225deg);
-}
-
-.Button.Minimise:before {
-  background: rgba(0, 0, 0, .7);
-  border: none;
-  height: 1px;
-  padding: 1px;
-  width: 7px;
-}
-
-.Button.Minimise:after {
-  content:none;
-}
-
-.Button.Close:before,
-.Button.Close:after {
-  background: rgb(72, 31, 32);
-  border: none;
-  height: 1px;
-  padding: 1px;
-  width: 9px;
-}
-
-.Button.Close:before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.Button.Close:after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.Close {
-  background: #F1686C;
-}
-.Minimise {
-  background: #F0B67F;
-}
-
-.Fullscreen {
-  background: #03cdab;
 }
 
 .Console {
@@ -127,6 +81,16 @@
   text-align: left;
 }
 
+.Console > * {
+  opacity: 1;
+  transition: .3s ease;
+}
+
+.minimise .Console > * {
+    font-size: 0;
+    opacity: 0;
+}
+
 .ConsoleHeader {
   background: #3b3355;
   display: flex;
@@ -137,8 +101,8 @@
   width: 100%;
 }
 
-.ConsoleHeader:hover .Button:before,
-.ConsoleHeader:hover .Button:after {
+.ConsoleHeader:hover button:before,
+.ConsoleHeader:hover button:after {
   opacity: 1;
 }
 

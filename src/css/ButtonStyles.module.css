@@ -1,0 +1,86 @@
+
+.Button {
+  padding: 8px;
+  border-radius: 100%;
+  background: #000;
+  margin: 0 5px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.Button:hover:before,
+.Button:hover:after {
+    opacity: 1;
+}
+
+.Button:hover,
+.Button:active,
+.Button:focus {
+  filter: brightness(1.5);
+}
+
+.Button:before,
+.Button:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(0, 0, 0, .7);
+  opacity: 0;
+  transition: .1s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Button.Fullscreen:before {
+  transform: translate(-30%, -100%) rotate(45deg);
+}
+
+.Button.Fullscreen:after {
+  transform: translate(-75%, 0) rotate(225deg);
+}
+
+.Button.Minimise:before {
+  background: rgba(0, 0, 0, .7);
+  border: none;
+  height: 1px;
+  padding: 1px;
+  width: 7px;
+}
+
+.Button.Minimise:after {
+  content:none;
+}
+
+.Button.Close:before,
+.Button.Close:after {
+  background: rgb(72, 31, 32);
+  border: none;
+  height: 1px;
+  padding: 1px;
+  width: 9px;
+}
+
+.Button.Close:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.Button.Close:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.Close {
+  background: #F1686C;
+}
+.Minimise {
+  background: #F0B67F;
+}
+
+.Fullscreen {
+  background: #03cdab;
+}
