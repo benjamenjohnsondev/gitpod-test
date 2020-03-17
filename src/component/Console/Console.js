@@ -6,17 +6,19 @@ import Prompt from "../Console/Prompt";
 class Console extends Component {
   constructor(props) {
     super(props);
+    let temp = "Just a demo, no commands yet. Try navigating!";
+    temp = temp.split("");
     this.state = {
       data: ["hey", "world"],
       currText: "",
       history: 0,
       initialText: "Just a demo, no commands yet. Try navigating!",
-      tempText: [],
+      tempText: temp,
       commands: {
         'easteregg' : this.easterEgg
       },
       modifier: "",
-      timeout: ""
+      timeout: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -37,13 +39,6 @@ class Console extends Component {
     this.setState({timeout: setTimeout(() => {
       this.showText(this.state.tempText, 0, 100);
     }, 200)});
-  }
-  componentWillMount() {
-    let temp = this.state.initialText;
-    temp = temp.split("");
-    this.setState({
-      tempText: temp
-    });
   }
   showText(message, index, interval) {
     if (index < message.length) {
