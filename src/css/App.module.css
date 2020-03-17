@@ -54,6 +54,11 @@
   height: 100%;
 }
 
+.AppWrap.fullscreen .ConsoleHeader,
+.AppWrap.fullscreen .Console {
+  max-width: none;
+}
+
 .AppWrap.fullscreen .AppHeader{
   height: 100vh;
   max-height: none;
