@@ -17,7 +17,6 @@
   max-width: 100%;
   transform-origin: center top;
   transition: .3s ease;
-  max-height: 321px;
 }
 
 .minimise .AppHeader {
